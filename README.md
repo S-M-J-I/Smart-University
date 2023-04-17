@@ -2,6 +2,8 @@
 
 *This project was submitted as an evaluation metric for the course Microprocessor, Microcontroller and Interfacing Laboratory in United Internation University.*
 
+This project is a hardware-software fusion. Find the software(web-app) part [here](https://github.com/S-M-J-I/Smart-University-Attendance).
+
 ## Problem Statement & Solution
 
 Universities have many "background" processes that are done physically such as turning of room lights, attendance systems, and so on. Thus, we made a multidisciplinary electronics system that would automate these "background" tasks and save time and resources.
@@ -9,7 +11,7 @@ Universities have many "background" processes that are done physically such as t
 ## Features
 
 Our system provides:
-- Automated online attendance system through biometric (fingerprint) validation.
+- Automated online attendance system through biometric (fingerprint) validation. [Find the seperate repo here](https://github.com/S-M-J-I/Smart-University-Attendance)
 - Automatic toggling of room lights
 - Automated roof-top system for monsoon.
 - Automated plant-watering system for the university's green environment.

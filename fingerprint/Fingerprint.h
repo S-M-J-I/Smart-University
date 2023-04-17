@@ -3,14 +3,14 @@
 #include <Adafruit_Fingerprint.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial fp(2,3); // digital, analog => fingerprint sensor
+SoftwareSerial fp(14,12); // digital, analog => fingerprint sensor
 
 
 Adafruit_Fingerprint fps = Adafruit_Fingerprint(&fp);
 int fingerprintID = 0;
 static int count = 0;
 String fingerprintIDName = "";
-
+int enrollingFingerprintID = 0;
 
 // get and match fingerprints
 uint8_t getFingerprintID() {
@@ -92,7 +92,7 @@ uint8_t getFingerprintID() {
 
 
 
-int getFingerprintEnroll(int id, String studentName) {
+int getFingerprintEnroll(int id) {
 
   int p = -1;
   Serial.print("Waiting for valid finger to enroll as #"); Serial.println(id);

@@ -2,8 +2,12 @@
 #define IR_H
 #include "LED.h"
 
-#define WIRSensor 5 // connect ir welcome sensor to arduino pin 5
+#define WIRSensor 5  // connect ir welcome sensor to arduino pin 5
 #define GIRSensor 6  // connect ir goodbye sensor to arduino pin 6
+
+unsigned long timeWIR = 0;
+unsigned long timeGIR = 0;
+
 
 double WIR = 0.0;
 double GIR = 0.0;
@@ -12,39 +16,40 @@ int _count = 0;
 bool trigger = 0;
 
 void increaseCount() {
-  _count++;
+  _count+=1;
 }
 
 void decrementCount() {
-  if(_count > 0) {
-    _count--;
+  if (_count > 0) {
+    _count-=1;
   }
 }
 
 void IRToggleRoomElec() {
+
+  unsigned long timestamp = millis();
+
   WIR = digitalRead(WIRSensor);
   GIR = digitalRead(GIRSensor);
 
-   Serial.print("GIR (pin 6):");
-   Serial.println(GIR);
-   Serial.print("WIR (pin 5):");
-   Serial.println(WIR);
+  //  Serial.print("GIR (pin 6):");
+  //  Serial.println(GIR);
+  //  Serial.print("WIR (pin 5):");
+  //  Serial.println(WIR);
 
   // IF LOW THEN ONLY DETECTION
-  if(GIR == LOW) {
+  if (WIR == LOW) {
     // for test
     Serial.println("Detected, counting");
     increaseCount();
-    // delay(200);
-    return;
+    delay(500);
   }
-  
-  if(WIR == LOW){
-    // for test
+
+  if (GIR == LOW) {
+    // for test    
     Serial.println("Detected, decreasing");
     decrementCount();
-    // delay(200);
-    return;
+    delay(500);
   }
 
 }

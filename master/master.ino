@@ -10,11 +10,10 @@
 #include "LED.h"
 #include "IR.h"
 #include "UserStore.h"
-#include "Fingerprint.h"
 
-SoftwareSerial bluetooth(10,11); // RX, TX => bluetooth
 
 int LEDs[] = {12};
+double initSensorVal = 0;
 
 void setup() 
 {
@@ -25,21 +24,17 @@ void setup()
   pinMode(GIRSensor, INPUT); // sensor pin INPUT
   pinMode(PIRSensor, INPUT); // sensor pin INPUT
 
-  digitalWrite(WIRSensor, LOW);
-  digitalWrite(GIRSensor, LOW);
   
-  // Bluetooth begin
-  bluetooth.begin(9600);
   
   // fingerprint sensor begin and find/setup
-  fingerprint:
-  fps.begin(57600);
-  if(fps.verifyPassword()){
-    Serial.println("Active");
-  }else{
-    Serial.println("Inactive sensor");
-//     goto fingerprint;
-  }
+//   fingerprint:
+//   fps.begin(57600);
+//   if(fps.verifyPassword()){
+//     Serial.println("Active");
+//   }else{
+//     Serial.println("Inactive sensor");
+// //     goto fingerprint;
+//   }
   
 
   // for all leds, make them output  
@@ -47,14 +42,17 @@ void setup()
     pinMode(i, OUTPUT);
   }
   
+  initSensorVal = analogRead(A0);
+  
 }
 
 
 void loop()
 {
   
-  dimDownLEDS(LEDs);
+  // dimDownLEDS(LEDs);
   IRToggleRoomElec();
+
 
 
   if(_count > 0) {
@@ -97,5 +95,6 @@ void loop()
 //  }
  
   
-  delay(300);
+  // delay(400);
 }
+
